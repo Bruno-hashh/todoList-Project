@@ -1,11 +1,11 @@
 <template>
 
   <q-page>
-    <p class="text-h1" style="text-align: center; margin-top: 20px;">TODO-LIST</p>
+    <p class="text-h2" style="text-align: center; margin-top: 20px;">TODO-LIST</p>
 
     <div style="display: flex; justify-content: center; gap: 10px;">
-      <q-input style="width: 200px;" outlined v-model="newTodoText" :dense="dense" />
-      <q-input style="width: 200px;" outlined v-model="newTodoDate" placeholder="" :dense="dense" />
+      <q-input style="width: 150px;" outlined v-model="newTodoText" :dense="dense" />
+      <q-input style="width: 150px;" outlined v-model="newTodoDate" placeholder="" :dense="dense" />
       <q-btn :ripple="false" color="secondary" label="ADICIONAR" no-caps @click="addTodo" />
     </div>
 
