@@ -65,6 +65,7 @@ export default defineComponent({
         this.todos.push(newTodo)
         this.newTodoText = ''
         this.newTodoDate = ''
+        this.saveTodos()
       } else if (this.newTodoText === '') {
         alert('[ERRO] Insira uma tarefa!')
       } else if (this.newTodoDate === '') {
@@ -76,14 +77,28 @@ export default defineComponent({
     },
     finishEditing (todo) {
       todo.editing = false
+      this.saveTodos()
     },
     deleteTodo (index) {
       if (confirm('Tem certeza que deseja excluir esta tarefa?')) {
         this.todos.splice(index, 1)
+        this.saveTodos()
       }
     },
     toggleCompleted (index) {
       this.todos[index].completed = !this.todos[index].completed
+      this.saveTodos()
+    },
+    saveTodos () {
+    // Salvando os dados da lista de tarefas no local storage
+      localStorage.setItem('todos', JSON.stringify(this.todos))
+    }
+  },
+
+  mounted () {
+    const storedTodos = localStorage.getItem('todos')
+    if (storedTodos) {
+      this.todos = JSON.parse(storedTodos)
     }
   }
 })
