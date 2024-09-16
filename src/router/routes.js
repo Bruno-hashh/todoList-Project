@@ -1,6 +1,13 @@
 const routes = [
   {
     path: '/',
+    component: () => import('layouts/Todo-List.vue'),
+    children: [
+      { path: '', component: () => import('pages/Todo.vue') }
+    ]
+  },
+  {
+    path: '/auth',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/IndexPage.vue') }
